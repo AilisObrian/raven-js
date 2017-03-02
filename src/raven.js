@@ -671,11 +671,9 @@ Raven.prototype = {
             if (user.email) qs += '&email=' + encode(user.email);
         }
 
-        var globalServer = this._getGlobalServer(this._parseDSN(dsn));
-
         var script = _document.createElement('script');
         script.async = true;
-        script.src = globalServer + '/api/embed/error-page/' + qs;
+        script.src = '/api/sentry/error-page/' + qs;
         (_document.head || _document.body).appendChild(script);
     },
 
