@@ -1,4 +1,4 @@
-/*! Raven.js 3.11.0 (cb87941) | github.com/getsentry/raven-js */
+/*! Raven.js 3.12.0 (b8d9670) | github.com/getsentry/raven-js */
 
 /*
  * Includes TraceKit
@@ -176,7 +176,7 @@ Raven.prototype = {
     // webpack (using a build step causes webpack #1617). Grunt verifies that
     // this value matches package.json during build.
     //   See: https://github.com/getsentry/raven-js/issues/465
-    VERSION: '3.11.0',
+    VERSION: '3.12.0',
 
     debug: false,
 
@@ -765,11 +765,9 @@ Raven.prototype = {
             if (user.email) qs += '&email=' + encode(user.email);
         }
 
-        var globalServer = this._getGlobalServer(this._parseDSN(dsn));
-
         var script = _document.createElement('script');
         script.async = true;
-        script.src = globalServer + '/api/embed/error-page/' + qs;
+        script.src = '/api/sentry/error-page/' + qs;
         (_document.head || _document.body).appendChild(script);
     },
 
